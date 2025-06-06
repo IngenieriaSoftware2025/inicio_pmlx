@@ -26,6 +26,13 @@
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="/ejemplo/"><i class="bi bi-house-fill me-2"></i>Inicio</a>
                     </li>
+
+                      <li>
+                        <a class="nav-link" aria-current="page" href="/inicio_pmlx/inicio"><i class="bi bi-person-fill-check"></i>  </i>Iniciar sesion</a>
+                    </li>
+                     <li>
+                        <a class="nav-link" aria-current="page" href="/inicio_pmlx/registro"><i class="bi bi-person-plus-fill"></i>  </i>Registro</a>
+                    </li>
   
                     <div class="nav-item dropdown " >
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
