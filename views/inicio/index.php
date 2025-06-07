@@ -38,4 +38,4 @@
 </body>
 </html>
 
-<script src="<?= asset('build/js/registro/index.js') ?>"></script>
+<script src="<?= asset('build/js/inicio/index.js') ?>"></script>

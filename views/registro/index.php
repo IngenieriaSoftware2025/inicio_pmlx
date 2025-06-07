@@ -114,4 +114,4 @@
         </div>
     </div>
 
-    <script src="<?= asset('build/js/usuarios/index.js') ?>"></script>
+    <script src="<?= asset('build/js/registro/index.js') ?>"></script>

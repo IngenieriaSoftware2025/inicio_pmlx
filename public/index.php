@@ -29,6 +29,8 @@ $router->get('/inicio',[InicioController::class,'mostrarPagina']);
 //registro 
 $router->get('/registro',[RegistroController::class,'mostrarPagina']);
 $router->post('/registro/guardarAPI', [RegistroController::class, 'guardarAPI']);
+$router->post('/registro/validarDuplicados', [RegistroController::class, 'validarDuplicados']);
+$router->get('/registro/guardarAPI', [RegistroController::class, 'testAPI']);
 
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
