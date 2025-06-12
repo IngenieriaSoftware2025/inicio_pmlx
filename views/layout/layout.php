@@ -16,7 +16,7 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="/ejemplo/">
+            <a class="navbar-brand" href="/inicio_pmlx/inicio">
                 <img src="<?= asset('./images/cit.png') ?>" width="35px'" alt="cit" >
                 Aplicaciones
             </a>
@@ -24,14 +24,30 @@
                 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin: 0;">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/ejemplo/"><i class="bi bi-house-fill me-2"></i>Inicio</a>
+                        <a class="nav-link" aria-current="page" href="/inicio_pmlx/inicio"><i class="bi bi-house-fill me-2"></i>Inicio</a>
                     </li>
 
-                      <li>
-                        <a class="nav-link" aria-current="page" href="/inicio_pmlx/inicio"><i class="bi bi-person-fill-check"></i>  </i>Iniciar sesion</a>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" style="border: none; background: none;" href="/inicio_pmlx/usuarios">
+                            <i class="bi bi-people-fill me-2"></i>Usuarios
+                        </a>
                     </li>
-                     <li>
-                        <a class="nav-link" aria-current="page" href="/inicio_pmlx/registro"><i class="bi bi-person-plus-fill"></i>  </i>Registro</a>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" style="background: none;" href="/inicio_pmlx/aplicacion">
+                            <i class="bi bi-grid-fill me-2"></i>Aplicaciones
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link px-3" style="background: none; border: none;" href="/inicio_pmlx/permisos">
+                            <i class="bi bi-shield-lock-fill me-2"></i>Permisos
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link px-3" style="border: none; background: none;" href="/inicio_pmlx/login">
+                            <i class="bi bi-box-arrow-in-right me-2"></i>Login
+                        </a>
                     </li>
   
                     <div class="nav-item dropdown " >
@@ -39,7 +55,6 @@
                             <i class="bi bi-gear me-2"></i>Dropdown
                         </a>
                         <ul class="dropdown-menu  dropdown-menu-dark "id="dropwdownRevision" style="margin: 0;">
-                            <!-- <h6 class="dropdown-header">Información</h6> -->
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/aplicaciones/nueva"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Subitem</a>
                             </li>
@@ -51,8 +66,7 @@
 
                 </ul> 
                 <div class="col-lg-1 d-grid mb-lg-0 mb-2">
-                    <!-- Ruta relativa desde el archivo donde se incluye menu.php -->
-                    <a href="/menu/" class="btn btn-danger"><i class="bi bi-arrow-bar-left"></i>MENÚ</a>
+                    <a href="/proyecto01_macs/inicio" class="btn btn-danger"><i class="bi bi-arrow-bar-left"></i>MENÚ</a>
                 </div>
 
             

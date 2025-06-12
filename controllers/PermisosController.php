@@ -5,9 +5,9 @@ namespace Controllers;
 use Exception;
 use MVC\Router;
 use Model\ActiveRecord;
-use Model\Roles;
+use Model\Permisos;
 
-class RolesController extends ActiveRecord
+class PermisosController extends ActiveRecord
 {
 
     public static function renderizarPagina(Router $router)

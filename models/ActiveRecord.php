@@ -12,16 +12,10 @@ class ActiveRecord {
 
     // Alertas y Mensajes
     protected static $alertas = [];
-
     
     // Definir la conexión a la BD - includes/database.php
     public static function setDB($database) {
         self::$db = $database;
-    }
-
-    public static function getDB(): PDO
-    {
-        return self::$db;
     }
 
     public static function setAlerta($tipo, $mensaje) {
@@ -31,8 +25,6 @@ class ActiveRecord {
     public static function getAlertas() {
         return static::$alertas;
     }
-
-
 
     public function validar() {
         static::$alertas = [];
