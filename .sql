@@ -49,7 +49,7 @@ asignacion_motivo VARCHAR (250) NOT NULL,
 asignacion_situacion SMALLINT DEFAULT 1,
 FOREIGN KEY (asignacion_usuario_id) REFERENCES usuario(usuario_id),
 FOREIGN KEY (asignacion_app_id) REFERENCES aplicacion(app_id),
-FOREIGN KEY (asignacion_permiso_id) REFERENCES permiso(permiso_id)
+FOREIGN KEY (_permiso_id) REFERENCES permiso(permiso_id)
 );
 
 CREATE TABLE historial_act(

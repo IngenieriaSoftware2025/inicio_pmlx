@@ -38,11 +38,21 @@
                         </a>
                     </li>
 
+                
+                    
                     <li class="nav-item">
-                        <a class="nav-link px-3" style="background: none; border: none;" href="/inicio_pmlx/permisos">
-                            <i class="bi bi-shield-lock-fill me-2"></i>Permisos
+                        <a class="nav-link px-3" style="background: none; border: none;" href="/inicio_pmlx/permisos1">
+                            <i class="bi bi-shield-lock-fill me-2"></i>Permisos1
                         </a>
                     </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link px-3" style="background: none; border: none;" href="/inicio_pmlx/asignacion_permisos1">
+                            <i class="bi bi-shield-lock-fill me-2"></i>Asignacion de Permisos 1
+                        </a>
+                    </li>
+
 
                     <li class="nav-item">
                         <a class="nav-link px-3" style="border: none; background: none;" href="/inicio_pmlx/login">
