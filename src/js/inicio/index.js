@@ -1,0 +1,1 @@
+const FormInicio = document.ent.getElementById('FormLogin')
