@@ -5,7 +5,6 @@
             <div class="card shadow-lg border-0 rounded-4">
                 <div class="card-body bg-gradient" style="background: linear-gradient(90deg, #f8fafc 60%, #e3f2fd 100%);">
                     <div class="mb-4 text-center">
-                        <h5 class="fw-bold text-secondary mb-2">¡Gestión de Asignaciones!</h5>
                         <h3 class="fw-bold text-primary mb-0">ASIGNACIÓN DE PERMISOS A USUARIOS</h3>
                     </div>
                     <form id="formAsignacion" class="p-4 bg-white rounded-3 shadow-sm border">

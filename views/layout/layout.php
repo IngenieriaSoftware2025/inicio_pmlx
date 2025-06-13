@@ -23,6 +23,14 @@
             <div class="collapse navbar-collapse" id="navbarToggler">
                 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin: 0;">
+               
+                    <li class="nav-item">
+                        <a class="nav-link px-3" style="border: none; background: none;" href="/inicio_pmlx/login">
+                            <i class="bi bi-box-arrow-in-right me-2"></i>Login
+                        </a>
+                    </li>
+
+
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="/inicio_pmlx/inicio"><i class="bi bi-house-fill me-2"></i>Inicio</a>
                     </li>
@@ -42,23 +50,17 @@
                     
                     <li class="nav-item">
                         <a class="nav-link px-3" style="background: none; border: none;" href="/inicio_pmlx/permisos1">
-                            <i class="bi bi-shield-lock-fill me-2"></i>Permisos1
+                            <i class="bi bi-shield-lock-fill me-2"></i>Permisos
                         </a>
                     </li>
 
 
                     <li class="nav-item">
                         <a class="nav-link px-3" style="background: none; border: none;" href="/inicio_pmlx/asignacion_permisos1">
-                            <i class="bi bi-shield-lock-fill me-2"></i>Asignacion de Permisos 1
+                            <i class="bi bi-shield-lock-fill me-2"></i>Asignacion de Permisos
                         </a>
                     </li>
 
-
-                    <li class="nav-item">
-                        <a class="nav-link px-3" style="border: none; background: none;" href="/inicio_pmlx/login">
-                            <i class="bi bi-box-arrow-in-right me-2"></i>Login
-                        </a>
-                    </li>
   
                     <div class="nav-item dropdown " >
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">

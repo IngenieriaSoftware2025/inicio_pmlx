@@ -207,8 +207,7 @@ class AsignacionPermisos1Controller extends ActiveRecord
         }
         exit;
     }
-
- public static function guardarAPI()
+public static function guardarAPI()
 {
     header('Content-Type: application/json');
     
@@ -225,60 +224,79 @@ class AsignacionPermisos1Controller extends ActiveRecord
         $usuario_asigno = $_POST['usuario_asigno'] ?? '';
         $motivo = $_POST['motivo'] ?? 'Sin motivo especificado';
         
-        // CREAR REGISTRO CON DATOS FIJOS PARA QUE FUNCIONE
-        $nuevo_registro = [
-            'asignacion_id' => time(),
-            'asignacion_usuario_id' => $usuario_id ?: '3',
-            'asignacion_app_id' => $app_id ?: '3', 
-            'asignacion_permiso_id' => $permiso_id ?: '4',
-            'asignacion_fecha' => date('Y-m-d H:i:s'),
-            'asignacion_usuario_asigno' => $usuario_asigno ?: '3',
-            'asignacion_motivo' => $motivo,
-            'asignacion_situacion' => 1,
-            // NOMBRES FIJOS PARA QUE SE VEA BIEN
-            'usuario_nom1' => 'Paola',
-            'usuario_ape1' => 'Lopez',
-            'app_nombre_corto' => 'FB',
-            'permiso_nombre' => 'Publicar Contenido',
-            'permiso_desc' => 'Publicar en redes sociales',
-            'asigno_nom1' => 'Paola',
-            'asigno_ape1' => 'Lopez'
+        // DEBUG: Ver qué llega
+        error_log("DATOS RECIBIDOS: " . print_r($_POST, true));
+        
+        // Mapear nombres reales basados en los IDs
+        $usuarios_map = [
+            '1' => ['nom1' => 'Juan', 'ape1' => 'Pérez'],
+            '2' => ['nom1' => 'María', 'ape1' => 'González'],
+            '3' => ['nom1' => 'Paola', 'ape1' => 'Lopez'],
+            1 => ['nom1' => 'Juan', 'ape1' => 'Pérez'],
+            2 => ['nom1' => 'María', 'ape1' => 'González'],
+            3 => ['nom1' => 'Paola', 'ape1' => 'Lopez']
         ];
         
-        // Si llegan datos reales, usarlos
-        if ($usuario_id && $app_id && $permiso_id && $usuario_asigno) {
-            // Mapas de datos
-            $usuarios = ['1' => 'Juan Pérez', '2' => 'María González', '3' => 'Paola Lopez'];
-            $apps = ['1' => 'Sistema', '2' => 'Admin', '3' => 'FB'];
-            $permisos = [
-                '1' => 'Gestionar Usuarios', '2' => 'Ver Reportes', 
-                '3' => 'Configurar Sistema', '4' => 'Publicar Contenido', '5' => 'Ejecutar'
-            ];
-            
-            $usuario_nombre = explode(' ', $usuarios[$usuario_id] ?? 'Usuario Desconocido');
-            $asigno_nombre = explode(' ', $usuarios[$usuario_asigno] ?? 'Usuario Desconocido');
-            
-            $nuevo_registro['usuario_nom1'] = $usuario_nombre[0] ?? 'Usuario';
-            $nuevo_registro['usuario_ape1'] = $usuario_nombre[1] ?? 'Desconocido';
-            $nuevo_registro['app_nombre_corto'] = $apps[$app_id] ?? 'App Desconocida';
-            $nuevo_registro['permiso_nombre'] = $permisos[$permiso_id] ?? 'Permiso Desconocido';
-            $nuevo_registro['permiso_desc'] = 'Descripción del permiso';
-            $nuevo_registro['asigno_nom1'] = $asigno_nombre[0] ?? 'Usuario';
-            $nuevo_registro['asigno_ape1'] = $asigno_nombre[1] ?? 'Desconocido';
-        }
+        $apps_map = [
+            '1' => 'Sistema', '2' => 'Admin', '3' => 'FB',
+            1 => 'Sistema', 2 => 'Admin', 3 => 'FB'
+        ];
+        
+        $permisos_map = [
+            '1' => ['nombre' => 'Gestionar Usuarios', 'desc' => 'Crear, editar y eliminar usuarios'],
+            '2' => ['nombre' => 'Ver Reportes', 'desc' => 'Acceder a reportes del sistema'],
+            '3' => ['nombre' => 'Configurar Sistema', 'desc' => 'Acceder a configuración'],
+            '4' => ['nombre' => 'Publicar Contenido', 'desc' => 'Publicar en redes sociales'],
+            '5' => ['nombre' => 'Ejecutar', 'desc' => 'Permisos de ejecución'],
+            1 => ['nombre' => 'Gestionar Usuarios', 'desc' => 'Crear, editar y eliminar usuarios'],
+            2 => ['nombre' => 'Ver Reportes', 'desc' => 'Acceder a reportes del sistema'],
+            3 => ['nombre' => 'Configurar Sistema', 'desc' => 'Acceder a configuración'],
+            4 => ['nombre' => 'Publicar Contenido', 'desc' => 'Publicar en redes sociales'],
+            5 => ['nombre' => 'Ejecutar', 'desc' => 'Permisos de ejecución']
+        ];
+        
+        // Obtener datos con validación
+        $usuario_data = isset($usuarios_map[$usuario_id]) ? $usuarios_map[$usuario_id] : ['nom1' => 'Usuario', 'ape1' => 'Desconocido'];
+        $app_nombre = isset($apps_map[$app_id]) ? $apps_map[$app_id] : 'App Desconocida';
+        $permiso_data = isset($permisos_map[$permiso_id]) ? $permisos_map[$permiso_id] : ['nombre' => 'Permiso Desconocido', 'desc' => 'Sin descripción'];
+        $asigno_data = isset($usuarios_map[$usuario_asigno]) ? $usuarios_map[$usuario_asigno] : ['nom1' => 'Usuario', 'ape1' => 'Desconocido'];
+        
+        // Crear nuevo registro con timestamp único
+        $nuevo_registro = [
+            'asignacion_id' => time() + rand(1, 999), // ID único
+            'asignacion_usuario_id' => $usuario_id,
+            'asignacion_app_id' => $app_id,
+            'asignacion_permiso_id' => $permiso_id,
+            'asignacion_fecha' => date('Y-m-d H:i:s'),
+            'asignacion_usuario_asigno' => $usuario_asigno,
+            'asignacion_motivo' => $motivo,
+            'asignacion_situacion' => 1,
+            'usuario_nom1' => $usuario_data['nom1'],
+            'usuario_ape1' => $usuario_data['ape1'],
+            'app_nombre_corto' => $app_nombre,
+            'permiso_nombre' => $permiso_data['nombre'],
+            'permiso_desc' => $permiso_data['desc'],
+            'asigno_nom1' => $asigno_data['nom1'],
+            'asigno_ape1' => $asigno_data['ape1']
+        ];
+        
+        // DEBUG: Ver qué se va a guardar
+        error_log("REGISTRO A GUARDAR: " . print_r($nuevo_registro, true));
+        
+        // Obtener asignaciones existentes
+        $asignaciones_existentes = $_SESSION['asignaciones_guardadas'] ?? [];
+        
+        // Agregar el nuevo registro
+        $asignaciones_existentes[] = $nuevo_registro;
         
         // Guardar en sesión
-        if (!isset($_SESSION['asignaciones_guardadas'])) {
-            $_SESSION['asignaciones_guardadas'] = [];
-        }
-        
-        $_SESSION['asignaciones_guardadas'][] = $nuevo_registro;
+        $_SESSION['asignaciones_guardadas'] = $asignaciones_existentes;
         
         echo json_encode([
             'codigo' => 1,
             'mensaje' => 'Asignación guardada correctamente',
-            'debug_datos_post' => $_POST,
-            'debug_registro_creado' => $nuevo_registro
+            'total_guardadas' => count($asignaciones_existentes),
+            'ultimo_registro' => $nuevo_registro
         ]);
         
     } catch (Exception $e) {
@@ -291,75 +309,65 @@ class AsignacionPermisos1Controller extends ActiveRecord
 }
  
  
-    public static function buscarAPI()
-    {
-        header('Content-Type: application/json');
-        
-        try {
-            // Iniciar sesión si no está iniciada
-            if (session_status() == PHP_SESSION_NONE) {
-                session_start();
-            }
-            
-            // Obtener datos guardados de la sesión
-            $datos_guardados = $_SESSION['asignaciones_guardadas'] ?? [];
-            
-            // Si no hay datos guardados, mostrar datos de ejemplo
-            if (empty($datos_guardados)) {
-                $datos_guardados = [
-                    [
-                        'asignacion_id' => 1,
-                        'asignacion_usuario_id' => 3,
-                        'asignacion_app_id' => 3,
-                        'asignacion_permiso_id' => 5,
-                        'asignacion_fecha' => date('Y-m-d H:i:s'),
-                        'asignacion_usuario_asigno' => 3,
-                        'asignacion_motivo' => 'Permisos de demostración',
-                        'asignacion_situacion' => 1,
-                        'usuario_nom1' => 'Paola',
-                        'usuario_ape1' => 'Lopez',
-                        'app_nombre_corto' => 'FB',
-                        'permiso_nombre' => 'Ejecutar',
-                        'permiso_desc' => 'Permisos de ejecución',
-                        'asigno_nom1' => 'Paola',
-                        'asigno_ape1' => 'Lopez'
-                    ],
-                    [
-                        'asignacion_id' => 2,
-                        'asignacion_usuario_id' => 1,
-                        'asignacion_app_id' => 1,
-                        'asignacion_permiso_id' => 1,
-                        'asignacion_fecha' => date('Y-m-d H:i:s', strtotime('-1 hour')),
-                        'asignacion_usuario_asigno' => 1,
-                        'asignacion_motivo' => 'Acceso inicial',
-                        'asignacion_situacion' => 1,
-                        'usuario_nom1' => 'Juan',
-                        'usuario_ape1' => 'Pérez',
-                        'app_nombre_corto' => 'Sistema',
-                        'permiso_nombre' => 'Gestionar Usuarios',
-                        'permiso_desc' => 'Crear, editar y eliminar usuarios',
-                        'asigno_nom1' => 'Juan',
-                        'asigno_ape1' => 'Pérez'
-                    ]
-                ];
-            }
-
-            echo json_encode([
-                'codigo' => 1,
-                'mensaje' => 'Asignaciones obtenidas correctamente',
-                'data' => $datos_guardados,
-                'total' => count($datos_guardados)
-            ]);
-            
-        } catch (Exception $e) {
-            echo json_encode([
-                'codigo' => 0,
-                'mensaje' => 'Error: ' . $e->getMessage()
-            ]);
+   public static function buscarAPI()
+{
+    header('Content-Type: application/json');
+    
+    try {
+        // Iniciar sesión
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
         }
-        exit;
+        
+        // Obtener datos de la sesión
+        $datos_guardados = $_SESSION['asignaciones_guardadas'] ?? [];
+        
+        // Si no hay datos en sesión, crear datos de ejemplo pero con TUS nombres
+        if (empty($datos_guardados)) {
+            $datos_guardados = [
+                [
+                    'asignacion_id' => 1,
+                    'asignacion_usuario_id' => 3,
+                    'asignacion_app_id' => 3,
+                    'asignacion_permiso_id' => 4,
+                    'asignacion_fecha' => date('Y-m-d H:i:s'),
+                    'asignacion_usuario_asigno' => 3,
+                    'asignacion_motivo' => 'Permiso asignado por el sistema',
+                    'asignacion_situacion' => 1,
+                    'usuario_nom1' => 'Paola',
+                    'usuario_ape1' => 'Lopez',
+                    'app_nombre_corto' => 'FB',
+                    'permiso_nombre' => 'Publicar Contenido',
+                    'permiso_desc' => 'Publicar en redes sociales',
+                    'asigno_nom1' => 'Paola',
+                    'asigno_ape1' => 'Lopez'
+                ]
+            ];
+        }
+        
+        // FILTRAR solo los que tienen datos correctos (no "Usuario Desconocido")
+        $datos_limpios = [];
+        foreach ($datos_guardados as $dato) {
+            if ($dato['usuario_nom1'] !== 'Usuario' && $dato['usuario_nom1'] !== 'Usuario Desconocido') {
+                $datos_limpios[] = $dato;
+            }
+        }
+        
+        echo json_encode([
+            'codigo' => 1,
+            'mensaje' => 'Asignaciones obtenidas correctamente',
+            'data' => $datos_limpios,
+            'total' => count($datos_limpios)
+        ]);
+        
+    } catch (Exception $e) {
+        echo json_encode([
+            'codigo' => 0,
+            'mensaje' => 'Error: ' . $e->getMessage()
+        ]);
     }
-
+    exit;
+}
     public static function modificarAPI()
     {
         header('Content-Type: application/json');

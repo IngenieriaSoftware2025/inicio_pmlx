@@ -4,8 +4,7 @@
             <div class="card shadow-lg border-0 rounded-4">
                 <div class="card-body bg-gradient" style="background: linear-gradient(90deg, #f8fafc 60%, #e3f2fd 100%);">
                     <div class="mb-4 text-center">
-                        <h5 class="fw-bold text-secondary mb-2">¡Bienvenido a Nuestra Aplicación!</h5>
-                        <h3 class="fw-bold text-primary mb-0">MANIPULACIÓN DE APLICACIONES</h3>
+                        <h3 class="fw-bold text-primary mb-0"> REGISTRO DE APLICACIONES</h3>
                     </div>
                     <form id="formAplicacion" class="p-4 bg-white rounded-3 shadow-sm border">
                         <input type="hidden" id="app_id" name="app_id">
