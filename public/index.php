@@ -6,8 +6,6 @@ use Controllers\AppController;
 use Controllers\RegistroController;
 use Controllers\AplicacionController;
 use Controllers\AsignacionPermisos1Controller;
-use Controllers\AsignacionPermisosController;
-use Controllers\PermisosController;
 use Controllers\LoginController;
 use Controllers\Permisos1Controller;
 
@@ -39,24 +37,6 @@ $router->get('/aplicacion/buscarAPI', [AplicacionController::class, 'buscarAPI']
 $router->post('/aplicacion/modificarAPI', [AplicacionController::class, 'modificarAPI']);
 $router->get('/aplicacion/eliminar', [AplicacionController::class, 'EliminarAPI']);
 
-//permisos
-$router->get('/permisos', [PermisosController::class, 'renderizarPagina']);
-$router->post('/permisos/guardarAPI', [PermisosController::class, 'guardarAPI']);
-$router->get('/permisos/buscarAPI', [PermisosController::class, 'buscarAPI']);
-$router->post('/permisos/modificarAPI', [PermisosController::class, 'modificarAPI']);
-$router->get('/permisos/eliminar', [PermisosController::class, 'EliminarAPI']);
-$router->get('/permisos/buscarAplicacionesAPI', [PermisosController::class, 'buscarAplicacionesAPI']);
-$router->get('/permisos/buscarUsuariosAPI', [PermisosController::class, 'buscarUsuariosAPI']);
-
-
-//asignacion permisos
-$router->get('/asignacion_permisos', [AsignacionPermisosController::class, 'renderizarPagina']);
-$router->post('/asignacion_permisos/guardarAPI', [AsignacionPermisosController::class, 'guardarAPI']);
-$router->get('/asignacion_permisos/buscarAPI', [AsignacionPermisosController::class, 'buscarAPI']);
-$router->post('/asignacion_permisos/modificarAPI', [AsignacionPermisosController::class, 'modificarAPI']);
-$router->get('/asignacion_permisos/eliminar', [AsignacionPermisosController::class, 'EliminarAPI']);
-$router->get('/asignacion_permisos/buscarAplicacionesAPI', [AsignacionPermisosController::class, 'buscarAplicacionesAPI']);
-$router->get('/asignacion_permisos/buscarUsuariosAPI', [AsignacionPermisosController::class, 'buscarUsuariosAPI']);
 
 
 //permisos1
